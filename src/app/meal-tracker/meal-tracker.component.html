@@ -37,7 +37,6 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Action</th>
             <td mat-cell *matCellDef="let mealTracker">
-                <button mat-raised-button color="primary" (click)="edit()">Edit</button>
                 <button mat-raised-button color="warn" (click)="delete(mealTracker.id)">Delete</button>
             </td>
           </ng-container>
@@ -90,10 +89,10 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ totalsConsuemd.totalCaloriesConsumed }}</td>
-                <td>{{ totalsConsuemd.totalProteinConsumed }}</td>
-                <td>{{ totalsConsuemd.totalCarbohydrateConsumed }}</td>
-                <td>{{ totalsConsuemd.totalFatsConsumed }}</td>
+                <td>{{ totalsConsuemd?.totalCaloriesConsumed }}</td>
+                <td>{{ totalsConsuemd?.totalProteinConsumed }}</td>
+                <td>{{ totalsConsuemd?.totalCarbohydrateConsumed }}</td>
+                <td>{{ totalsConsuemd?.totalFatsConsumed }}</td>
             </tr>
         </tbody>
     </table>

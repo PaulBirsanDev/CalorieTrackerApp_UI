@@ -73,6 +73,7 @@ calculateUpdetedMeals() {
       
     })
     console.log(this.updatedMeals);
+    this.mealsService.getTotals();
   });
 }
 
@@ -91,7 +92,7 @@ openDialog(meal?: MealTrackerModel): void {
     if (result.event === 'submit' && meal) {
       this.mealsService.addMeal(result.data).subscribe();
       location.reload();
-    } else if (result.event === 'add') {
+    } else if (result.event === 'add' && result.data.quantity !== '') {
       this.mealsService.addMeal(result.data).subscribe();
       location.reload();
     }

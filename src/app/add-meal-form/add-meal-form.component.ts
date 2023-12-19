@@ -12,9 +12,9 @@ export class AddMealFormComponent implements OnInit {
   addMealForm = new FormGroup({
     name: new FormControl('', Validators.required),
     quantity: new FormControl('', Validators.required),
-    caloriesPer100gr: new FormControl('', Validators.required),
+    caloriePer100gr: new FormControl('', Validators.required),
     proteinPer100gr: new FormControl('', Validators.required),
-    carbohydratesPer100gr: new FormControl('', Validators.required),
+    carbohydratePer100gr: new FormControl('', Validators.required),
     fatsPer100gr: new FormControl('', Validators.required)
   });
 
@@ -29,9 +29,9 @@ export class AddMealFormComponent implements OnInit {
   ngOnInit(): void {
     this.addMealForm.controls.name.setValue(this.currentMeal.name);
     this.addMealForm.controls.quantity.setValue(this.currentMeal.quantity.toString());
-    this.addMealForm.controls.caloriesPer100gr.setValue(this.currentMeal.caloriePer100gr.toString());
+    this.addMealForm.controls.caloriePer100gr.setValue(this.currentMeal.caloriePer100gr.toString());
     this.addMealForm.controls.proteinPer100gr.setValue(this.currentMeal.proteinPer100gr.toString());
-    this.addMealForm.controls.carbohydratesPer100gr.setValue(this.currentMeal.carbohydratePer100gr.toString());
+    this.addMealForm.controls.carbohydratePer100gr.setValue(this.currentMeal.carbohydratePer100gr.toString());
     this.addMealForm.controls.fatsPer100gr.setValue(this.currentMeal.fatsPer100gr.toString());
   }
 
@@ -39,16 +39,16 @@ export class AddMealFormComponent implements OnInit {
     const updateMeal = {
       name: this.addMealForm.controls.name.getRawValue(),
       quantity: this.addMealForm.controls.quantity.getRawValue(),
-      capital: this.addMealForm.controls.caloriesPer100gr.getRawValue(),
-      continent: this.addMealForm.controls.proteinPer100gr.getRawValue(),
-      population: this.addMealForm.controls.carbohydratesPer100gr.getRawValue(),
-      area: this.addMealForm.controls.fatsPer100gr.getRawValue()
+      caloriePer100gr: this.addMealForm.controls.caloriePer100gr.getRawValue(),
+      proteinPer100gr: this.addMealForm.controls.proteinPer100gr.getRawValue(),
+      carbohydratePer100gr: this.addMealForm.controls.carbohydratePer100gr.getRawValue(),
+      fatsPer100gr: this.addMealForm.controls.fatsPer100gr.getRawValue()
     }
 
     if (this.currentMeal) {
-      this.dialogRef.close({ event: 'submit', data: { value: updateMeal, isSearch: false } });
+      this.dialogRef.close({ event: 'submit', data: updateMeal });
     } else {
-      this.dialogRef.close({ event: 'add', data: { value: updateMeal, isSearch: false } });
+      this.dialogRef.close({ event: 'add', data: updateMeal });
     }
   }
 
