@@ -14,6 +14,7 @@ export class MealTrackerComponent implements OnInit {
  meals: MealTrackerModel[] = []
  updatedMeals: UpdatedMealModel[] = []
  totalsConsuemd: TotalModel[] = []
+ displayedColumns: string[] = ['Id', 'name', 'calories/100', 'protein/100', 'carbs/100', 'fats/100', 'actions'];
 
 
  constructor(private mealsService: MealServiceService) {
