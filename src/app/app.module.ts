@@ -7,13 +7,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { MealTrackerComponent } from './meal-tracker/meal-tracker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { AddMealFormComponent } from './add-meal-form/add-meal-form.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MealTrackerComponent
+    MealTrackerComponent,
+    AddMealFormComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,12 @@ import { MatButtonModule } from '@angular/material/button'
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

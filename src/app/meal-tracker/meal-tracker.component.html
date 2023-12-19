@@ -1,6 +1,6 @@
-<!-- <div class="add-button">
-    <mat-icon aria-hidden="false" aria-label="Add new country" fontIcon="add_circle" (click)="openDialog()" style="cursor: pointer;"></mat-icon>
-</div> -->
+<div class="add-button">
+    <button mat-raised-button (click)="openDialog()">Add Meal</button>
+</div>
 
 <div class="meals">
     <table mat-table [dataSource]="meals" class="mat-elevation-z8">
@@ -38,7 +38,7 @@
             <th mat-header-cell *matHeaderCellDef> Action</th>
             <td mat-cell *matCellDef="let mealTracker">
                 <button mat-raised-button color="primary" (click)="edit()">Edit</button>
-                <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+                <button mat-raised-button color="warn" (click)="delete(mealTracker.id)">Delete</button>
             </td>
           </ng-container>
 
@@ -51,32 +51,35 @@
 
 </div>
 <div class="calculate">
-    <button (click)="calculateUpdetedMeals()">Calculate Per Quantity Consumed</button>
+    <button mat-raised-button color="accent" (click)="calculateUpdetedMeals()">Calculate Macronutriens</button>
 </div>
-<div class="updatedMeals">
-    <table>
+<div class="updated">
+    <table class="update">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Cal</th>
-                <th>Proteins</th>
+                <th>Protein</th>
                 <th>Carbs</th>
                 <th>Fats</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let updateMeal of updatedMeals">
-                <td>{{ updateMeal.mealID }}</td>
-                <td>{{ updateMeal.totalCaloriesConsumed }}</td>
-                <td>{{ updateMeal.totalProteinConsumed }}</td>
-                <td>{{ updateMeal.totalCarbohydrateConsumed }}</td>
-                <td>{{ updateMeal.totalFatsConsumed }}</td>
-            </tr>
+                <tr *ngFor="let updateMeal of updatedMeals">
+                    <td>{{ updateMeal.mealID }}</td>
+                    <td>{{ updateMeal.totalCaloriesConsumed }}</td>
+                    <td>{{ updateMeal.totalProteinConsumed }}</td>
+                    <td>{{ updateMeal.totalCarbohydrateConsumed }}</td>
+                    <td>{{ updateMeal.totalFatsConsumed }}</td>
+                </tr>
         </tbody>
     </table>
+      
+      
 </div>
+
 <div class="totals">
-    <table>
+    <table class="total">
         <thead>
             <tr>
                 <th>Total Cal</th>
@@ -86,11 +89,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let total of totalsConsuemd">
-                <td>{{ total.totalCaloriesConsumed }}</td>
-                <td>{{ total.totalProteinConsumed }}</td>
-                <td>{{ total.totalCarbohydrateConsumed }}</td>
-                <td>{{ total.totalFatsConsumed }}</td>
+            <tr>
+                <td>{{ totalsConsuemd.totalCaloriesConsumed }}</td>
+                <td>{{ totalsConsuemd.totalProteinConsumed }}</td>
+                <td>{{ totalsConsuemd.totalCarbohydrateConsumed }}</td>
+                <td>{{ totalsConsuemd.totalFatsConsumed }}</td>
             </tr>
         </tbody>
     </table>

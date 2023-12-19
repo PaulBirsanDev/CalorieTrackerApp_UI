@@ -3,6 +3,8 @@ import { MealServiceService } from '../services/meal-service.service';
 import { MealTrackerModel } from '../model/mealmodel';
 import { UpdatedMealModel } from '../model/updatedMeal';
 import { TotalModel } from '../model/total';
+import { MatDialog } from '@angular/material/dialog';
+import { AddMealFormComponent } from '../add-meal-form/add-meal-form.component';
 
 @Component({
   selector: 'app-meal-tracker',
@@ -13,11 +15,12 @@ export class MealTrackerComponent implements OnInit {
  meal: string = 'Nuttela'
  meals: MealTrackerModel[] = []
  updatedMeals: UpdatedMealModel[] = []
- totalsConsuemd: TotalModel[] = []
- displayedColumns: string[] = ['Id', 'name', 'calories/100', 'protein/100', 'carbs/100', 'fats/100', 'actions'];
+ totalsConsuemd: TotalModel
+ displayedColumns: string[] = ['Id', 'name', 'calories/100', 'protein/100', 'carbs/100', 'fats/100', 'actions',];
+ displayedColumnsUpdate: string[] = ['Updated Id', 'Calories', 'Protein', 'Carbs', 'Fats'];
 
 
- constructor(private mealsService: MealServiceService) {
+ constructor(private mealsService: MealServiceService, private dialogRef: MatDialog) {
 
  }
 
@@ -41,25 +44,20 @@ export class MealTrackerComponent implements OnInit {
 
 
   this.mealsService.getTotals().subscribe(result => {
-    this.totalsConsuemd = result.map((element: any) => {
-      return {
-        totalCaloriesConsumed: element.totalCaloriesConsumed,
-        totalProteinConsumed: element.totalProteinConsumed,
-        totalCarbohydrateConsumed: element.totalCarbohydrateConsumed,
-        totalFatConsumed: element.totalFatConsumed
-      }
-      
-    })
+    // this.totalsConsuemd = result.map((element: any) => {
+    //   return {
+    //     totalCaloriesConsumed: element.totalCaloriesConsumed,
+    //     totalProteinConsumed: element.totalProteinConsumed,
+    //     totalCarbohydrateConsumed: element.totalCarbohydrateConsumed,
+    //     totalFatConsumed: element.totalFatConsumed
+    //   }
+    this.totalsConsuemd = result;
     console.log(this.totalsConsuemd);
   });
  }
 
  edit(): void {
   console.log('Edit was clicked');
-}
-
-delete(): void {
-  console.log('Delete was clicked');
 }
 
 calculateUpdetedMeals() {
@@ -76,6 +74,33 @@ calculateUpdetedMeals() {
     })
     console.log(this.updatedMeals);
   });
+}
+
+openDialog(meal?: MealTrackerModel): void {
+  console.log('opening dialog');
+  const dialogRef = this.dialogRef.open(AddMealFormComponent, {
+    width: '500px',
+    backdropClass: 'custom-dialog-backdrop-class',
+    panelClass: 'custom-dialog-panel-class',
+    data: meal
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('close');
+
+    if (result.event === 'submit' && meal) {
+      this.mealsService.addMeal(result.data).subscribe();
+      location.reload();
+    } else if (result.event === 'add') {
+      this.mealsService.addMeal(result.data).subscribe();
+      location.reload();
+    }
+  })
+}
+
+delete(id: number): void {
+  this.mealsService.deleteMeal(id).subscribe();
+  location.reload();
 }
 
 

@@ -5,3 +5,23 @@ table {
 button {
     margin: 10px 20px;
 }
+
+.add-button {
+    background-color:blueviolet;
+    margin-top: 20px;
+    padding-left: 50%;
+}
+
+.meals {
+    margin-top: 20px;
+}
+
+.calculate {
+    margin-top: 10px;
+    background-color: blueviolet;
+}
+
+.update {
+    width: 50%;
+    border-color: black;
+}
