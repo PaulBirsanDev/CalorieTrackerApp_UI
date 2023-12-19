@@ -37,19 +37,7 @@ export class MealTrackerComponent implements OnInit {
     console.log(this.meals);
   });
 
-  this.mealsService.getAllUpdatedMeals().subscribe(result => {
-    this.updatedMeals = result.map((element: any) => {
-      return {
-        mealId: element.mealID,
-        totalCaloriesConsumed: element.totalCaloriesConsumed,
-        totalProteinConsumed: element.totalProteinConsumed,
-        totalCarbohydrateConsumed: element.totalCarbohydrateConsumed,
-        totalFatConsumed: element.totalFatConsumed
-      }
-      
-    })
-    console.log(this.updatedMeals);
-  });
+
 
   this.mealsService.getTotals().subscribe(result => {
     this.totalsConsuemd = result.map((element: any) => {
@@ -64,6 +52,30 @@ export class MealTrackerComponent implements OnInit {
     console.log(this.totalsConsuemd);
   });
  }
+
+ edit(): void {
+  console.log('Edit was clicked');
+}
+
+delete(): void {
+  console.log('Delete was clicked');
+}
+
+calculateUpdetedMeals() {
+  this.mealsService.getAllUpdatedMeals().subscribe(result => {
+    this.updatedMeals = result.map((element: any) => {
+      return {
+        mealId: element.mealID,
+        totalCaloriesConsumed: element.totalCaloriesConsumed,
+        totalProteinConsumed: element.totalProteinConsumed,
+        totalCarbohydrateConsumed: element.totalCarbohydrateConsumed,
+        totalFatConsumed: element.totalFatConsumed
+      }
+      
+    })
+    console.log(this.updatedMeals);
+  });
+}
 
 
 

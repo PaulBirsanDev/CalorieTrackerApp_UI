@@ -9,6 +9,7 @@
                 <th>Protein/100gr</th>
                 <th>Carbohydrates/100gr</th>
                 <th>Fats/100gr</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +21,16 @@
                 <td>{{ mealTracker.proteinPer100gr }}</td>
                 <td>{{ mealTracker.carbohydratePer100gr }}</td>
                 <td>{{ mealTracker.fatsPer100gr }}</td>
+                <td>
+                    <button (click)="edit()">Edit</button>
+                    <button (click)="delete()">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="calculate">
+    <button (click)="calculateUpdetedMeals()">Calculate Per Quantity Consumed</button>
 </div>
 <div class="updatedMeals">
     <table>
