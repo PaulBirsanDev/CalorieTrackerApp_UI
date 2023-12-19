@@ -1,0 +1,70 @@
+<div class="meals">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Calories/100gr</th>
+                <th>Protein/100gr</th>
+                <th>Carbohydrates/100gr</th>
+                <th>Fats/100gr</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mealTracker of meals">
+                <td>{{ mealTracker.id }}</td>
+                <td>{{ mealTracker.name }}</td>
+                <td>{{ mealTracker.quantity }}</td>
+                <td>{{ mealTracker.caloriePer100gr }}</td>
+                <td>{{ mealTracker.proteinPer100gr }}</td>
+                <td>{{ mealTracker.carbohydratePer100gr }}</td>
+                <td>{{ mealTracker.fatsPer100gr }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="updatedMeals">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cal</th>
+                <th>Proteins</th>
+                <th>Carbs</th>
+                <th>Fats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let updateMeal of updatedMeals">
+                <td>{{ updateMeal.mealID }}</td>
+                <td>{{ updateMeal.totalCaloriesConsumed }}</td>
+                <td>{{ updateMeal.totalProteinConsumed }}</td>
+                <td>{{ updateMeal.totalCarbohydrateConsumed }}</td>
+                <td>{{ updateMeal.totalFatsConsumed }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="totals">
+    <table>
+        <thead>
+            <tr>
+                <th>Total Cal</th>
+                <th>Total Proteins</th>
+                <th>Total Carbs</th>
+                <th>Total Fats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let total of totalsConsuemd">
+                <td>{{ total.totalCaloriesConsumed }}</td>
+                <td>{{ total.totalProteinConsumed }}</td>
+                <td>{{ total.totalCarbohydrateConsumed }}</td>
+                <td>{{ total.totalFatsConsumed }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
